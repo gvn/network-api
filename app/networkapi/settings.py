@@ -302,12 +302,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-STATIC_URL = '/'
+STATIC_URL = '/static/'
 
-print(app('static'))
+WHITENOISE_ROOT = app('frontend')
+WHITENOISE_STATIC_PREFIX = '/'
+WHITENOISE_INDEX_FILE = True
 
 STATICFILES_DIRS = [
-    app('frontend'),
+    app('static'),
 ]
 
 logging.info(app('static'))
