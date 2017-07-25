@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 import os
 import environ
 import dj_database_url
+import logging
 
 app = environ.Path(__file__) - 1
 root = app - 1
@@ -301,15 +302,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/'
 
-STATICFILES_DIRS = (
-    app('static'),
-)
+print(app('static'))
+
+STATICFILES_DIRS = [
+    app('frontend'),
+]
+
+logging.info(app('static'))
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATIC_ROOT = root('staticfiles')
+
 
 
 # Rest Framework Settings
